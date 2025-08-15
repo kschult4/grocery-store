@@ -1,0 +1,5 @@
+{
+  "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools",
+  "arduino.logLevel": "info",
+  "arduino.disableIntelliSenseAutoGen": false
+}

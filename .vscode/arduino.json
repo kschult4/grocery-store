@@ -1,0 +1,5 @@
+{
+  "sketch": "firmware/firmware.ino",
+  "board": "arduino:renesas_uno:unowifir4",
+  "port": "/dev/cu.usbmodem1101"
+}
