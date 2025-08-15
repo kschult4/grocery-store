@@ -2,9 +2,8 @@
 
 ## Pin Connections
 
-### HC-SR04 Ultrasonic Sensor
-- **TRIG** → Arduino Pin D2
-- **ECHO** → Arduino Pin D3  
+### IR Break Beam Sensor (5mm LEDs)
+- **Signal** → Arduino Pin D2 (with internal pull-up)
 - **VCC** → 5V
 - **GND** → GND
 
@@ -43,10 +42,11 @@
 - Use twisted pair or shielded cable for longer runs
 
 ### Sensor Placement
-- Mount ultrasonic sensor away from direct LED panel heat
-- Angle sensor slightly to avoid reflections from checkout surface
-- Ensure clear line of sight to detection area
-- Keep sensor steady to avoid false triggers
+- Mount IR break beam emitter and receiver on opposite sides of scan area
+- Align emitter LED with receiver photodiode for optimal detection
+- Keep beam path clear of obstructions
+- Mount securely to prevent misalignment from vibrations
+- Typical detection range: 10-80cm depending on ambient light
 
 ### Mechanical Considerations
 - Secure all connections with heat shrink tubing
@@ -65,7 +65,7 @@
 ### Component Testing Order
 1. **LED Test**: Upload `test/test_led.ino` - verify colors and no flickering
 2. **Buzzer Test**: Upload `test/test_buzzer.ino` - confirm audible beep
-3. **Sensor Test**: Upload `test/test_ultrasonic.ino` - check distance readings
+3. **Sensor Test**: Upload `test/test_ir_break_beam.ino` - check beam detection
 4. **Integration Test**: Upload main `firmware.ino` - full system test
 
 ### Troubleshooting
@@ -76,9 +76,9 @@
 - **Flickering**: Check power supply capacity, reduce brightness
 
 #### Sensor Issues  
-- **No readings**: Check TRIG/ECHO pin connections
-- **Inconsistent readings**: Check for reflective surfaces, mounting stability
-- **False triggers**: Adjust `SCAN_THRESHOLD_CM`, check for vibrations
+- **No detection**: Check emitter/receiver alignment and power connections
+- **False triggers**: Check for ambient IR interference, ensure stable mounting
+- **Inconsistent detection**: Verify beam alignment, clean optical surfaces
 
 #### System Resets
 - **Random resets**: Usually power supply issues, reduce LED brightness
@@ -88,7 +88,7 @@
 
 Install these libraries through Arduino IDE Library Manager:
 - **FastLED** (WS2812B control)
-- **NewPing** (HC-SR04 ultrasonic sensor)
+- **Built-in debouncing** (no external library needed for IR break beam)
 - **Arduino_LED_Matrix** (optional - UNO R4 built-in display)
 
 ## Recommended Hardware

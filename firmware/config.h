@@ -1,10 +1,9 @@
 #pragma once
 
-// Ultrasonic
-#define PIN_TRIG 2
-#define PIN_ECHO 3
-#define SCAN_THRESHOLD_CM 10
+// IR Break Beam Sensor
+#define PIN_IR_BEAM 2
 #define SCAN_COOLDOWN_MS 1000
+#define DEBOUNCE_MS 50
 
 // Buzzer
 #define PIN_BUZZER 9
